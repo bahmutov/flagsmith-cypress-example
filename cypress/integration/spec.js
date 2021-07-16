@@ -30,7 +30,7 @@ describe('Flagsmith Cypress example', () => {
         )
         // make sure the feature is present
         expect(featureA, 'feature_a is present').to.be.an('object')
-        expect(featureA).and.to.have.property('enabled')
+        expect(featureA).to.have.property('enabled')
         // make sure the feature is always disabled
         console.log(
           'changing %s from %s to %s',
@@ -56,8 +56,7 @@ describe('Flagsmith Cypress example', () => {
         )
         // make sure the feature is present
         expect(featureA, 'feature_a is present').to.be.an('object')
-        expect(featureA).and.to.have.property('enabled')
-        // make sure the feature is always disabled
+        expect(featureA).to.have.property('enabled')
         console.log(
           'changing %s from %s to %s',
           featureA.feature.name,
@@ -67,6 +66,41 @@ describe('Flagsmith Cypress example', () => {
         featureA.enabled = true
       })
     }).as('flags')
+    cy.visit('/')
+    cy.wait('@flags')
+    cy.contains('#feature-area', 'Showing feature A').should('be.visible')
+  })
+
+  const setFeatureFlags = (flags = {}) => {
+    expect(flags).to.be.an('object').and.not.to.be.empty
+
+    cy.intercept('/api/v1/flags/', (req) => {
+      req.continue((res) => {
+        expect(res.body, 'response is a list of features').to.be.an('array')
+        Cypress._.forEach(flags, (value, flagName) => {
+          const feature = Cypress._.find(
+            res.body,
+            (f) => f.feature.name === flagName,
+          )
+          // make sure the feature is present
+          expect(feature, 'feature_a is present').to.be.an('object')
+          expect(feature).to.have.property('enabled')
+
+          console.log(
+            'changing %s from %s to %s',
+            feature.feature.name,
+            feature.enabled,
+            value,
+          )
+          feature.enabled = value
+        })
+      })
+    }).as('flags')
+  }
+
+  it('controls the flags', () => {
+    setFeatureFlags({ feature_a: true })
+
     cy.visit('/')
     cy.wait('@flags')
     cy.contains('#feature-area', 'Showing feature A').should('be.visible')
