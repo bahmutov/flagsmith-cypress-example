@@ -1,15 +1,15 @@
 {
   "name": "flagsmith-cypress-example",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Example controlling Flagsmith feature flags during Cypress end-to-end tests",
+  "private": true,
   "scripts": {
     "start": "serve -p 5600 public",
     "cy:open": "cypress open",
     "dev": "start-test 5600 cy:open"
   },
   "keywords": [],
-  "author": "",
+  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "cypress": "^7.7.0",
