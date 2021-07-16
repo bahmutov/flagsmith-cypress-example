@@ -12,4 +12,11 @@ describe('Flagsmith Cypress example', () => {
     cy.wait('@flags')
     cy.contains('Initializing...').should('not.exist')
   })
+
+  it('does not show feature A', () => {
+    cy.intercept('/api/v1/flags/', { fixture: 'no-feature-a.json' }).as('flags')
+    cy.visit('/')
+    cy.wait('@flags')
+    cy.contains('#feature-area', 'Not showing feature A')
+  })
 })
