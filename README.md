@@ -3,6 +3,8 @@
 [![renovate-app badge][renovate-badge]][renovate-app] ![cypress version](https://img.shields.io/badge/cypress-7.7.0-brightgreen)
 > Example controlling [Flagsmith](https://flagsmith.com/) feature flags during [Cypress](https://www.cypress.io) end-to-end tests
 
+![Override the feature_a flag during the test](./images/override.png)
+
 ## Install and start
 
 ```shell
