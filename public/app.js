@@ -1,13 +1,6 @@
-var user = {
-  firstName: 'Bob',
-  lastName: 'Loblaw',
-  key: 'bob@example.com',
-  custom: {
-    groups: 'beta_testers',
-  },
-}
-
+// output DIV element
 const div = document.createElement('div')
+div.setAttribute('id', 'feature-area')
 document.body.appendChild(div)
 
 div.appendChild(document.createTextNode('Initializing...'))
