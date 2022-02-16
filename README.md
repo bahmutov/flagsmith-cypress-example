@@ -1,6 +1,6 @@
 # flagsmith-cypress-example
 [![ci status][ci image]][ci url] [![badges status][badges image]][badges url] [![flagsmith-cypress-example](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/detailed/m7knva/main&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/m7knva/runs)
-[![renovate-app badge][renovate-badge]][renovate-app] ![cypress version](https://img.shields.io/badge/cypress-9.4.1-brightgreen)
+[![renovate-app badge][renovate-badge]][renovate-app] ![cypress version](https://img.shields.io/badge/cypress-9.5.0-brightgreen)
 > Example controlling [Flagsmith](https://flagsmith.com/) feature flags during [Cypress](https://www.cypress.io) end-to-end tests
 
 Read the blog post [Test Feature Flags Using Cypress and Flagsmith](https://glebbahmutov.com/blog/test-feature-flags/)
